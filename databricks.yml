@@ -12,3 +12,10 @@ targets:
 
 include:
   - resources/**/*.yml
+
+permissions:
+  - level: CAN_VIEW
+    group_name: data_analysts
+  - level: CAN_MANAGE
+    group_name: data_engineers
+
