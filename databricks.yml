@@ -1,0 +1,14 @@
+bundle:
+  name: sales-lakehouse
+
+sync:
+  include:
+    - src/**
+
+targets:
+  dev:
+    workspace:
+      profile: dev
+
+include:
+  - resources/**/*.yml
