@@ -3,7 +3,7 @@ bundle:
 
 sync:
   include:
-    - src/**
+    - dev/src/**/*.py
 
 targets:
   dev:
