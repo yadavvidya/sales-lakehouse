@@ -15,7 +15,8 @@ include:
 
 permissions:
   - level: CAN_VIEW
-    group_name: data_analysts
+    group_name: data_analyst
   - level: CAN_MANAGE
     group_name: data_engineers
+  
 
