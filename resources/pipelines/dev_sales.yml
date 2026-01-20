@@ -1,0 +1,18 @@
+resources:
+  pipelines:
+    sales_pipeline:
+      name: sales_dlt_dev
+      target: sales_dev
+      catalog: sales
+      serverless: true
+
+      libraries:
+        - file:
+            path: ../../src/bronze/ingest_sales.py
+        - file:
+            path: ../../src/silver/clean_sales.py
+        - file:
+            path: ../../src/gold/agg_sales.py
+
+      configuration:
+        pipeline.mode: "development"
