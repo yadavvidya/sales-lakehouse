@@ -10,6 +10,6 @@ def sales_clean():
     return (
         dlt.read_stream("sales_raw_v2")
         .withColumn("amount", col("amount").cast("double"))
-        .withColumn("order_date", col("order_date").cast("date"))
+        .withColumn("ingest_time", col("ingest_time").cast("date"))
     )
 
