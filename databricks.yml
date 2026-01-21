@@ -1,17 +1,19 @@
 bundle:
   name: sales-lakehouse
 
+include:
+  - resources/**/*.yml
+
 sync:
   include:
-    - dev/src/**/*.py
+    - src/**/*.py
 
 targets:
   dev:
     workspace:
       profile: dev
 
-include:
-  - resources/**/*.yml
+
 
 permissions:
   - level: CAN_VIEW

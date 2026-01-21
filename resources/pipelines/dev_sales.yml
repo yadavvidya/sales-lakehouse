@@ -15,4 +15,3 @@ resources:
             path: ../../src/dev/gold/agg_sales.py
       configuration:
         pipeline.mode: "development"
-        continuous: "false"
