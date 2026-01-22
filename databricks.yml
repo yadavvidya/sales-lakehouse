@@ -7,18 +7,30 @@ include:
 sync:
   include:
     - src/**/*.py
+  exclude:
+    - tests/**
 
 targets:
   dev:
+    mode: development
     workspace:
       profile: dev
+    variables:
+      catalog_name: sales
+      schema_name: sales_dev
+      
+  qa:
+    mode: development
+    workspace:
+      profile: QA
+    variables:
+      catalog_name: sales
+      schema_name: sales_qa
 
-
-
-permissions:
-  - level: CAN_VIEW
-    group_name: data_analyst
-  - level: CAN_MANAGE
-    group_name: data_engineers
-  
-
+  prod:
+    mode: production
+    workspace:
+      profile: prod
+    variables:
+      catalog_name: sales
+      schema_name: sales_prod

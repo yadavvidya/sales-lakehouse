@@ -1,8 +1,8 @@
 resources:
   pipelines:
     sales_pipeline:
-      name: sales_dlt_dev
-      target: sales_dev
+      name: sales_dlt_prod
+      target: sales_prod
       catalog: sales
       serverless: true
 
@@ -13,7 +13,8 @@ resources:
             path: ../../src/silver/clean_sales.py
         - file:
             path: ../../src/gold/agg_sales.py
+
       configuration:
-        pipeline.mode: "development"
-        env: dev
-        s3.raw.path: s3://sales-lakehouse-vidya/dev/raw/sales/
+        pipeline.mode: "production"
+        env: prod
+        s3.raw.path: s3://sales-lakehouse-vidya/prod/raw/sales/

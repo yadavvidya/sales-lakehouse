@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    sales_pipeline_job:
+      name: Sales DLT Pipeline Job
+      description: Orchestrates the sales lakehouse pipeline across bronze, silver, and gold layers
+      
+      schedule:
+        quartz_cron_expression: "0 0 * * * ?"
+        timezone_id: "UTC"
+        pause_status: UNPAUSED
+      
+      max_concurrent_runs: 1
+      
+      email_notifications:
+        on_failure:
+          - data-engineering@company.com
+        on_success:
+          - data-engineering@company.com
+      
+      tasks:
+        - task_key: run_sales_dlt_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.sales_pipeline.id}
+          timeout_seconds: 3600

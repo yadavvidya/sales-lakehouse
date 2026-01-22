@@ -25,6 +25,6 @@ def sales_clean():
         .withColumn("Total Revenue", col("Total Revenue").cast("double"))
         .withColumn("Total Cost", col("Total Cost").cast("double"))
         .withColumn("Total Profit", col("Total Profit").cast("double"))
-        .withColumn("ingest_time", col("ingest_time").cast("date"))
+        .withColumn("Order ID", col("Order ID").cast("string"))
     )
 
