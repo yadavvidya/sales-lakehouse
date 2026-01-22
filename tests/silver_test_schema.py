@@ -1,10 +1,3 @@
-# Databricks notebook source
-# MAGIC %md
-# MAGIC # Silver Layer Schema Tests
-# MAGIC Tests silver layer transformations and schema validation
-
-# COMMAND ----------
-
 from pyspark.sql.types import StringType, IntegerType, LongType, DoubleType, DateType
 from pyspark.sql.functions import col, expr
 
@@ -25,8 +18,6 @@ Expected_types = {
     "Total Cost": DoubleType(),
     "Total Profit": DoubleType()
 }
-
-# COMMAND ----------
 
 def test_silver_schema():
     """Test that silver layer schema matches expected types after transformations"""
@@ -63,8 +54,6 @@ def test_silver_schema():
     assert not missing_fields, f"Missing fields in schema: {missing_fields}"
     
     print("Silver schema validation passed!")
-
-# COMMAND ----------
 
 # Run the test
 test_silver_schema()

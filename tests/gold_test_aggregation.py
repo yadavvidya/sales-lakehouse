@@ -51,7 +51,6 @@ def test_aggregation_logic():
     
     print("Gold aggregation logic test passed!")
 
-# COMMAND ----------
 
 # Run the test
 test_aggregation_logic()

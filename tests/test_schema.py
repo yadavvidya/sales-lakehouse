@@ -1,14 +1,6 @@
-# Databricks notebook source
-# MAGIC %md
-# MAGIC # Schema Validation Tests for Sales Pipeline
-# MAGIC Tests silver layer transformations produce correct data types
-
-# COMMAND ----------
-
 from pyspark.sql.types import LongType, DoubleType, DateType, IntegerType
 from pyspark.sql.functions import col, expr
 
-# COMMAND ----------
 
 def test_silver_transformations():
     """Test silver layer transformations produce correct data types"""
@@ -41,7 +33,6 @@ def test_silver_transformations():
     
     print("Silver transformation test passed!")
 
-# COMMAND ----------
 
 # Run the test
 test_silver_transformations()

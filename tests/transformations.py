@@ -1,14 +1,6 @@
-# Databricks notebook source
-# MAGIC %md
-# MAGIC # Transformation Tests
-# MAGIC Tests date parsing transformations
-
-# COMMAND ----------
-
 from pyspark.sql.functions import expr
 from pyspark.sql.types import DateType
 
-# COMMAND ----------
 
 def test_date_parsing():
     """Test date parsing transformation works correctly"""
@@ -32,7 +24,6 @@ def test_date_parsing():
     
     print("Date parsing test passed!")
 
-# COMMAND ----------
 
 # Run the test
 test_date_parsing()

@@ -1,10 +1,3 @@
-# Databricks notebook source
-# MAGIC %md
-# MAGIC # Bronze Layer Data Quality Tests
-# MAGIC Tests that sample data meets all bronze layer DLT expectations
-
-# COMMAND ----------
-
 def test_data_quality_rules():
     """Test that sample data meets all bronze layer DLT expectations"""
     df = spark.read.option("header", "true").option("inferSchema", "true").csv("tests/data/sample_sales_data.csv")
@@ -35,7 +28,6 @@ def test_data_quality_rules():
     
     print("All bronze layer DLT expectations passed!")
 
-# COMMAND ----------
 
 # Run the test
 test_data_quality_rules()
