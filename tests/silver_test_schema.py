@@ -1,7 +1,11 @@
-"""
-Schema validation tests for sales pipeline - Silver Layer
-"""
-from pyspark.sql.types import StringType, IntegerType, DoubleType, DateType, TimestampType
+# Databricks notebook source
+# MAGIC %md
+# MAGIC # Silver Layer Schema Tests
+# MAGIC Tests silver layer transformations and schema validation
+
+# COMMAND ----------
+
+from pyspark.sql.types import StringType, IntegerType, LongType, DoubleType, DateType
 from pyspark.sql.functions import col, expr
 
 # Expected types for silver layer after transformations
@@ -12,7 +16,7 @@ Expected_types = {
     "Sales Channel": StringType(),
     "Order Priority": StringType(),
     "Order Date": DateType(),
-    "Order ID": StringType(),  # Fixed: Should be String, not Integer
+    "Order ID": LongType(),
     "Ship Date": DateType(),
     "Units Sold": IntegerType(),
     "Unit Price": DoubleType(),
@@ -22,8 +26,9 @@ Expected_types = {
     "Total Profit": DoubleType()
 }
 
+# COMMAND ----------
 
-def test_silver_schema(spark):
+def test_silver_schema():
     """Test that silver layer schema matches expected types after transformations"""
     # Read raw CSV
     df = spark.read.csv("tests/data/sample_sales_data.csv", header=True, inferSchema=True)
@@ -43,7 +48,7 @@ def test_silver_schema(spark):
         .withColumn("Total Revenue", col("Total Revenue").cast("double")) \
         .withColumn("Total Cost", col("Total Cost").cast("double")) \
         .withColumn("Total Profit", col("Total Profit").cast("double")) \
-        .withColumn("Order ID", col("Order ID").cast("string"))
+        .withColumn("Order ID", col("Order ID").cast("long"))
     
     # Validate schema
     for field in silver_df.schema.fields:
@@ -57,5 +62,10 @@ def test_silver_schema(spark):
     missing_fields = expected_fields - actual_fields
     assert not missing_fields, f"Missing fields in schema: {missing_fields}"
     
-    print("✅ Silver schema validation passed!")
-       
+    print("Silver schema validation passed!")
+
+# COMMAND ----------
+
+# Run the test
+test_silver_schema()
+print("All silver schema tests passed!")       

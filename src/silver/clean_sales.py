@@ -12,7 +12,7 @@ def sales_clean():
     return (
         dlt.read_stream("sales_bronze")
         .withWatermark("ingest_time", "10 minutes")
-        .withColumn("Order ID", col("Order ID").cast("integer"))
+        .withColumn("Order ID", col("Order ID").cast("long"))
         .withColumn("Region", col("Region").cast("string"))
         .withColumn("Country", col("Country").cast("string"))
         .withColumn("Item Type", col("Item Type").cast("string"))
