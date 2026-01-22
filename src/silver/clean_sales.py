@@ -12,6 +12,7 @@ def sales_clean():
     return (
         dlt.read_stream("sales_bronze")
         .withWatermark("ingest_time", "10 minutes")
+        .withColumn("Order ID", col("Order ID").cast("integer"))
         .withColumn("Region", col("Region").cast("string"))
         .withColumn("Country", col("Country").cast("string"))
         .withColumn("Item Type", col("Item Type").cast("string"))
@@ -25,6 +26,5 @@ def sales_clean():
         .withColumn("Total Revenue", col("Total Revenue").cast("double"))
         .withColumn("Total Cost", col("Total Cost").cast("double"))
         .withColumn("Total Profit", col("Total Profit").cast("double"))
-        .withColumn("Order ID", col("Order ID").cast("string"))
     )
 
